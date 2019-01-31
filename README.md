@@ -1,2 +1,2 @@
-# AB-Demo
-Simple front-end A/B experiment - [view it live!](https://lambdaschool.github.io/AB-Demo/)
+## AB-Testing Demo
+[Live!](https://colejhudson-ds2-lambdaschool.now.sh/)
