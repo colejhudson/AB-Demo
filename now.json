@@ -1,7 +1,7 @@
 {
   "version": 2,
+  "alias": "colejhudson-ds2-lambdaschool.now.sh",
   "builds": [
-    { "src": "*.html", "use": "@now/static" },
-    { "src": "*.js", "use": "@now/static" }
+    { "src": "next.config.js", "use": "@now/next" }
   ]
 }
