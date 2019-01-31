@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "alias": "colejhudson-ds2-lambdaschool.now.sh",
+  "alias": ["colejhudson-ds2-lambdaschool.now.sh"],
   "builds": [
     { "src": "next.config.js", "use": "@now/next" }
   ]
