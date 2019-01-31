@@ -47,29 +47,31 @@ const HorizontalCenter = props => (
   </div>
 )
 
-class Button extends React.Component {
+class ABButton extends React.Component {
   constructor(props) {
     super(props);
 
-    let { children, ...attributes } = props;
+    let { trials, ...attributes } = props;
 
     this.state = {};
     this.ref = React.createRef();
+    this.state.count = 0;
     this.state.attributes = attributes;
-    this.state.children = children;
+    this.state.text = trials[Math.floor(Math.random()*trials.length)]
   
     this.onClick = this.onClick.bind(this);
   }
 
   onClick() {
+    this.setState({ count: this.state.count+1 });
     confetti(this.ref.current, { startVelocity: 20, spread: 60 });
-    ga('send', 'event', 'AwesomeButton', 'Click');
+    ga('send', 'event', 'button', 'click', this.state.text);
   }
 
   render() {
     return (
       <div>
-        <button ref={this.ref} onClick={this.onClick} id='awesome-button' {...this.state.attributes}>{this.state.children}</button>
+        <button ref={this.ref} onClick={this.onClick} id='awesome-button' {...this.state.attributes}>{this.state.text}</button>
 
         <style jsx>{`
           #awesome-button {
@@ -106,7 +108,17 @@ export default () =>
   <div>
     <p id='call-to-action'>Dearest Sir or Madame, Please Click This Button</p>
     <HorizontalCenter>
-      <Button>Click Me Dawg</Button>
+      <ABButton 
+        trials={[
+          "Click Me Dawg",
+          "Thoust Must Click!",
+          "Wherefore You Don't Click, Throw Hands",
+          "Please Don't Click",
+          "If You Click This Anything Could Happen",
+          "7 Others Clicked This Button",
+          "CONGRATULATIONS YOUR THE 700000000th VISITOR"
+        ]}
+      />
     </HorizontalCenter>
 
     <GoogleAnalytics trackingId='UA-133576846-1' />
