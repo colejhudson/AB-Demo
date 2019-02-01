@@ -55,7 +55,6 @@ class ABButton extends React.Component {
 
     this.state = {};
     this.ref = React.createRef();
-    this.state.count = 0;
     this.state.attributes = attributes;
     this.state.text = trials[Math.floor(Math.random()*trials.length)]
   
@@ -63,7 +62,6 @@ class ABButton extends React.Component {
   }
 
   onClick() {
-    this.setState({ count: this.state.count+1 });
     confetti(this.ref.current, { startVelocity: 20, spread: 60 });
     ga('send', 'event', 'button', 'click', this.state.text);
   }
