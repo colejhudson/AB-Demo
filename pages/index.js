@@ -64,6 +64,7 @@ class ABButton extends React.Component {
   onClick() {
     confetti(this.ref.current, { startVelocity: 20, spread: 60 });
     ga('send', 'event', 'button', 'click', this.state.text);
+    ga('send', 'pageview');
   }
 
   render() {
