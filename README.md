@@ -1,2 +1,2 @@
 ## AB-Testing Demo
-[Live!](https://colejhudson-ds2-lambdaschool.now.sh/)
+[Live!](https://colejhudson-abtest-ds2-lambdaschool.now.sh/)
