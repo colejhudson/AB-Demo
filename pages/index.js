@@ -10,12 +10,17 @@ class GoogleAnalytics extends React.Component {
 
   componentDidMount() {
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments)}
-    gtag('js', new Date());
+    window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) }
+    ga.l =+ new Date;
 
+    function gtag() { dataLayer.push(arguments) }
+    gtag('js', new Date());
     gtag('config', this.state.trackingId);
+     
+    ga('create', this.state.trackingId, 'auto');
+    ga('send', 'pageview');   
   }
-  
+
   render() {
     return <script async src={`https://www.googletagmanager.com/gtag/js?id=${this.state.trackingId}`}></script>; 
   }
@@ -70,7 +75,14 @@ class ABButton extends React.Component {
   render() {
     return (
       <div>
-        <button ref={this.ref} onClick={this.onClick} id='awesome-button' {...this.state.attributes}>{this.state.text}</button>
+        <button 
+          ref={this.ref} 
+          onClick={this.onClick} 
+          id='awesome-button' 
+          {...this.state.attributes}
+        >
+            {this.state.text}
+        </button>
 
         <style jsx>{`
           #awesome-button {
@@ -105,6 +117,8 @@ class ABButton extends React.Component {
 
 export default () => 
   <div>
+    <GoogleAnalytics trackingId='UA-133576846-1' />
+    
     <p id='call-to-action'>Dearest Sir or Madame, Please Click This Button</p>
     <HorizontalCenter>
       <ABButton 
@@ -119,8 +133,6 @@ export default () =>
         ]}
       />
     </HorizontalCenter>
-
-    <GoogleAnalytics trackingId='UA-133576846-1' />
 
     <link async href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet"></link>
     <style>{`
